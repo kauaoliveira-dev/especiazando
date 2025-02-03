@@ -1,0 +1,395 @@
+*,
+::before,
+::after {
+	box-sizing: border-box;
+}
+
+/**********************************/
+/* 0. Variáveis
+/* 1. Estilos gerais
+/* 2. Navbar
+/* 3. Loading
+/* 4. Container
+/* 5. State Select
+/* 6. Status
+/* 7. Data Box
+/* 8. Footer
+/**********************************/
+
+/**********************************/
+/* 0. Variáveis
+/**********************************/
+
+[data-theme="light"] {
+	--clr-background:#F5F5F5;
+	--clr-font:#111111;
+    --clr-card:#FEE7E7;
+    --clr-switch-track:#AABBCC;
+    --clr-link:#3333FF;
+
+    --clr-confirmed:#D21212;
+    --clr-deaths:#223344;
+    --clr-vaccinated-1:#0000C7;
+    --clr-vaccinated-2:#117711;
+
+	--ff: "Cairo", sans-serif;
+    --ts-caption: 600 1.8rem/1 var(--ff);
+    --ts-normal-text: 400 1.6rem/1.4 var(--ff);
+    --ts-normal-semibold: 600 1.6rem/1.4 var(--ff);
+
+    --transition: all 0.2s linear;
+    --shadow-card: 5px 5px 30px 0 rgba(51, 51, 51, 20%);
+}
+
+[data-theme="dark"] {
+	--clr-background:#111111;
+	--clr-font:#F5F5F5;
+    --clr-card:#1A1A1A;
+    --clr-switch-track:#AABBCC;
+    --clr-link:#C2C2FF;
+
+    --clr-confirmed:#FF3333;
+    --clr-deaths:#AABBCC;
+    --clr-vaccinated-1:#6666DD;
+    --clr-vaccinated-2:#44BB44;
+    
+	--ff: "Cairo", sans-serif;
+    --ts-caption: 600 1.8rem/1 var(--ff);
+    --ts-normal-text: 400 1.6rem/1.4 var(--ff);
+    --ts-normal-semibold: 600 1.6rem/1.4 var(--ff);
+
+    --transition: all 0.2s linear;
+    --shadow-card: 5px 5px 30px 0 rgba(221, 221, 221, 5%);
+}
+
+/**********************************/
+/* 1. Estilos gerais
+/**********************************/
+
+html{
+    font-size: 62.5;
+    font-family: var(--ff);
+    color: var(--clr-font);
+    transition: var(--transition);
+}
+
+body{
+    background-color: var(--clr-background);
+    transition: var(--transition);
+}
+
+section{
+    background-color: var(--clr-card);
+    transition: var(--transition);
+    box-shadow: var(--shadow-card);
+    padding: 1.6rem;
+    border-radius: 1rem;
+}
+footer{
+    background-color: var(--clr-card);
+    transition: var(--transition);
+    font: var(--ts-normal-semibold);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 6rem;
+    text-align: center;
+}
+a{
+    color: var(--clr-link);
+    transition: var(--transition);
+    text-decoration: none;
+}
+/**********************************/
+/* 2. Navbar
+/**********************************/
+
+.navbar{
+    background-color: var(--clr-card);
+    transition: var(--transition);
+    min-height: 8.5rem;
+    padding: 1.6rem;
+    box-shadow: var(--shadow-card);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
+.logo{
+    fill:var(--clr-font);
+    transition: var(--transition);
+    
+}
+
+.switch{
+    display: flex;
+    font-size: 1.8rem;
+}
+
+.switch__track{
+    background-color: var(--clr-switch-track);
+    display: block;
+    height: 2rem;
+    width: 4rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    margin: 0 .2rem;
+}
+
+.switch__track::before{
+    content: "";
+    background-color: var(--clr-font);
+    transition: var(--transition);
+    display: block;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 1rem;
+    position: relative;
+    left: 0;
+}   
+
+.switch__track--darck::before{
+    left: 2rem;
+
+}
+
+/**********************************/
+/* 3. Loading
+/**********************************/
+
+.loading{
+    position: fixed;
+    background-color: var(--clr-background);
+    transition: var(--transition);
+    width: 100vw;
+    height: 100vh;
+    font-size: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+.loading__spinner{
+    animation: spin 2s infinite linear;
+}
+
+@keyframes spin {
+    to{
+        transform: rotate(360deg); 
+    }
+}
+
+.loading--hiden{
+    visibility: hidden;
+    opacity: 0;
+}
+
+/**********************************/
+/* 4. Container
+/**********************************/
+
+.container{
+    display: grid;
+    grid-template-columns: auto;
+    grid-gap: 30px;
+    margin: 3rem 1.6rem;
+}
+
+@media screen and (min-width: 960px){
+    .container{
+        grid-template-columns: repeat(2, 1fr); /*repetir o primeiro parametro e a quantidade de colunas*/
+    }
+}
+
+@media screen and (min-width: 1170px) {
+    .container{
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/**********************************/
+/* 5. State Select
+/**********************************/
+
+.state-select{
+    font: var(--ts-normal-semibold);
+    background-color: var(--clr-card);
+    transition: var(--transition);
+    box-shadow: var(--shadow-card);
+    border-radius: 1rem;
+    position: relative;
+}
+
+.state-select-toggle{
+    padding: 1.6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.state-select-toggle__icon{
+    transition: var(--transition);
+}
+
+.state-select-toggle__icon--rotate{
+    transform: rotate(-180dog);
+}
+
+.state-select-list{
+    max-height: 30rem;
+    overflow-y: scroll;
+    border-radius: 1rem;
+    padding: 1.6rem;
+    position: absolute;
+    width: 100%;
+    background-color: var(--clr-card);
+    transition: var(--transition);
+    box-shadow: var(--shadow-card);
+    top: calc(100% + 1.5rem);
+    visibility: hidden;
+    opacity: 0;
+}
+
+.state-select-list--show{
+    visibility: visible;
+    opacity: 1;
+    top: calc(100% + .75Rem);
+}
+
+.state-select-list__search{
+    background-color: var(--clr-background);
+    transition: var(--transition);
+    color: var(--clr-font);
+    padding: 1.6rem;
+    border-radius: 1rem;
+    border: none;
+    outline: none;
+    width: 100%;
+}
+
+.state-select-list__search::placeholder{
+    color: var(--clr-font);
+    opacity: 1.6rem;
+    transition: (var(--transition));
+}
+
+.state-select-list__item{
+    padding: 1.6rem;
+    color: var(--clr-link);
+    cursor: pointer;
+}
+
+.state-select-list__item:hover{
+    color: var(--clr-card);
+    background-color: var(--clr-link);
+
+}
+
+.state-select-list__item--hide{
+    display: none;
+}
+
+@media screen and (min-width: 960px) {
+    .state-select{
+        grid-column: 1/-1;/*função que abrevia G-C Star e G-C End, nele esta dizendo que essa classe vai do inicio ao fin da pagina*/
+    }
+    
+}
+
+@media screen and (min-width: 1170px) {
+    .state-select{
+        grid-column: 1;/*função que abrevia G-C Star e G-C End, nele esta dizendo que essa classe vai do inicio ao fin da pagina*/
+    }
+    
+}
+/**********************************/
+/* 6. Status
+/**********************************/
+
+.status{
+    min-height: 12rem;
+    display: flex;
+    align-items: center;
+}
+
+.status__icon{
+    font-size: 3.5rem;
+    margin-right: 0.8rem;
+    padding: 1rem;
+}
+
+.info {
+    font: var(--ts-caption);
+    text-transform: uppercase;
+}
+
+.status__icon--confirmed, .info__total--confirmed{
+    color: var(--clr-confirmed);
+    transition: var(--transition);
+}
+
+.status__icon--deths, .info__total--deths{
+    color: var(--clr-deaths);
+    transition: var(--transition);
+}
+
+.status__icon--vaccinated-1, .info__total--vaccinated-1{
+    color: var(--clr-vaccinated-1);
+    transition: var(--transition);
+}
+
+.status__icon--vaccinated-2, .info__total--vaccinated-2{
+    color: var(--clr-vaccinated-2);
+    transition: var(--transition);
+}
+
+@media screen and (min-width: 1170px) {
+    .status:nth-of-type(1){
+        grid-column: 1;
+    }
+    
+}
+
+/**********************************/
+/* 7. Data Box
+/**********************************/
+
+.data-box__header{
+    font: var(--ts-caption);
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+    padding: 0.75rem;
+}
+
+.data-box__description{
+    font: var(--ts-normal-semibold);
+}
+
+@media screen and (min-width: 960px) {
+    .data-box--30{
+        grid-column: span 2; /* span é para espandir o elemento*/
+    }  
+}
+
+@media screen and (min-width: 1170px) {
+    .data-box--30{
+        grid-column: span 3;
+        grid-row: span 2; /* span é para espandir o elemento*/
+    } 
+    .data-box--deaths, .data-box--confirmed, .data-box--vaccinated-abs,
+    .data-box--vaccinated-day{
+        grid-column: span 2; /* span é para espandir o elemento*/
+    }
+}
+
+/**********************************/
+/* 8. Footer
+/**********************************/
+
+.footer-text__source{
+    margin-bottom: 1.5rem;
+}
