@@ -1,4 +1,4 @@
-'''As respostas estão dentro de 3 aspas ''''
+'''As respostas estão dentro de 3 aspas '''
 
 
 # Exercícios de revisão:

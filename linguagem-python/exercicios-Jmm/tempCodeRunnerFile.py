@@ -1,0 +1,5 @@
+frase = str(input("escreva uma frase"))
+S1 = str(input("escreva oq quer trocar na frase:"))
+S2 = str(input("escreva pelo oq quer trocar na frase:"))
+inversão = frase.replace(S1, S2)
+print(inversão)
